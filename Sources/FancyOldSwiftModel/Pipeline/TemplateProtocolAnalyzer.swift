@@ -1,6 +1,7 @@
 import AST
 import Foundation
 
+/// Analyzes parsed swfift source files and generates an internal represenation of a model
 final class TemplateProtocolAnalyzer: ChainedAsyncResultOperation<(TopLevelDeclaration, Statements), SwiftModel, TemplateProtocolAnalyzer.Error> {
     enum Error: Swift.Error {
         case missingInput

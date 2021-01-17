@@ -1,5 +1,6 @@
 import Foundation
 
+/// Determines the tempalte file paths
 enum InputFileExtractor {
     static func extractInputFiles(from argument: GenerateFromTemplateArgument) -> [URL] {
         guard argument.modelPath.exists else {

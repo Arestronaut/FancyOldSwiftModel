@@ -1,6 +1,6 @@
 import Foundation
 
-open class AsyncResultOperation<Success, Failure>: AsyncOperation where Failure: Error {
+class AsyncResultOperation<Success, Failure>: AsyncOperation where Failure: Error {
 
     private(set) public var result: Result<Success, Failure>! {
         didSet {
