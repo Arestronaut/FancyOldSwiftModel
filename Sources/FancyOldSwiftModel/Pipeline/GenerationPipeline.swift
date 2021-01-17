@@ -4,6 +4,7 @@ final class GenerationPipeline {
     func run(with input: URL, output outputURL: URL) {
         Console.print(.status, "Starting generation pipeline for: %@", input.lastPathComponent)
 
+        // The pipeline is built on top of `OperationQueue`. Every step itself is an async Operation. The steps are put in sync with dependencies
         let sourceFileReader = SourceFileReader(input: input)
         let importsExtractor = ImportExtractor()
         let templateProtocolAnalyzer = TemplateProtocolAnalyzer()
@@ -13,6 +14,7 @@ final class GenerationPipeline {
         templateProtocolAnalyzer.addDependency(importsExtractor)
         sourceFileWriter.addDependency(templateProtocolAnalyzer)
 
+        // For the individual steps just print out if something went wrong.
         sourceFileReader.onResult = { result in
             guard case let .failure(error) = result else { return }
             Console.print(.error, "Reading source file: &@", error.localizedDescription)
@@ -33,6 +35,14 @@ final class GenerationPipeline {
         }
 
         let queue = OperationQueue()
-        queue.addOperations([sourceFileReader, importsExtractor, templateProtocolAnalyzer, sourceFileWriter], waitUntilFinished: true)
+        queue.addOperations(
+            [
+                sourceFileReader,
+                importsExtractor,
+                templateProtocolAnalyzer,
+                sourceFileWriter
+            ],
+            waitUntilFinished: true
+        )
     }
 }

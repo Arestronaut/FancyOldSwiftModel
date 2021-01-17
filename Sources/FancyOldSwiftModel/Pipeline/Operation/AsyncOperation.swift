@@ -1,7 +1,7 @@
 import Foundation
 
-open class AsyncOperation: Operation {
-    private let lockQueue = DispatchQueue(label: "com.swiftlee.asyncoperation", attributes: .concurrent)
+class AsyncOperation: Operation {
+    private let lockQueue = DispatchQueue(label: "com.fancyOldSwiftModel.asyncOperation", attributes: .concurrent)
 
     override open var isAsynchronous: Bool {
         return true

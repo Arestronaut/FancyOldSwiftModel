@@ -1,5 +1,6 @@
 import Foundation
 
+/// Writes the internal representation of a swift model to an actual usable swift model
 final class SourceFileWriter: ChainedAsyncResultOperation<SwiftModel, Void, SourceFileWriter.Error> {
     enum Error: Swift.Error {
         case missingInput

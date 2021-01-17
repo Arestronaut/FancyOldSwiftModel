@@ -3,6 +3,7 @@ import Foundation
 import Parser
 import Source
 
+/// Reads and parses swift source file
 final class SourceFileReader: ChainedAsyncResultOperation<URL, TopLevelDeclaration, SourceFileReader.Error> {
     enum Error: Swift.Error {
         case missingInput

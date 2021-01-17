@@ -1,6 +1,7 @@
 import Foundation
 
-// modelgenconfig: refType
-protocol NextTemplate: Equatable {
+// modelgenconfig: refType, open
+protocol AccountTemplate: Equatable, Codable {
+    var id: UUID { get }
     var name: String { get set }
 }

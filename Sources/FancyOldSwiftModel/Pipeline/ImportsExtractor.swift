@@ -1,6 +1,7 @@
 import AST
 import Foundation
 
+// Extracts imports from parsed sourcefile
 final class ImportExtractor: ChainedAsyncResultOperation<TopLevelDeclaration, (TopLevelDeclaration, Statements), ImportExtractor.Error> {
     enum Error: Swift.Error {
         case missingInput
