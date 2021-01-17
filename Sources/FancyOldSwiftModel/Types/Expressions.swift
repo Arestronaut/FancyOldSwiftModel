@@ -1,0 +1,8 @@
+enum Expressions {
+    static var templateFile: String = "^\\w+Template.swift$"
+    static let modelIdentifier: String = ".+?(?=Template)"
+    static let config: String = "^modelgenconfig:"
+    static let configProperties: String = "(?<=modelgenconfig:).*"
+    static let `import`: String = "^import [^\\s]+$"
+    static let imports: String = "(?<=import )[^\\s]+"
+}
