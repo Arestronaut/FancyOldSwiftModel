@@ -80,8 +80,12 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "generateFromTemplate -m /code/FancyOldSwiftModel/Example -t /code/FancyOldSwiftModel/Example/Templates"
+            argument = "generate -i InlineModel -m &quot;id: UUID, name: String&quot; -o /code/FancyOldSwiftModel/Example"
             isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "generateFromTemplate -m /code/FancyOldSwiftModel/Example -t /code/FancyOldSwiftModel/Example/Templates"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>

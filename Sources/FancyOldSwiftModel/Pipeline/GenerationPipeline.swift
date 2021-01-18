@@ -22,12 +22,12 @@ final class GenerationPipeline {
 
         importsExtractor.onResult = { result in
             guard case let .failure(error) = result else { return }
-            Console.print(.error, "Reading source file: &@", error.localizedDescription)
+            Console.print(.error, "Extracting imports: &@", error.localizedDescription)
         }
 
         templateProtocolAnalyzer.onResult = { result in
             guard case let .failure(error) = result else { return }
-            Console.print(.error, "Reading source file: &@", error.localizedDescription)
+            Console.print(.error, "Analyzing source file: &@", error.localizedDescription)
         }
 
         sourceFileWriter.onResult = { _ in

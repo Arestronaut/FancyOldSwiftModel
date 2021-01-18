@@ -1,16 +1,15 @@
 import Foundation
 
-typealias Import = String
-typealias Imports = [Import]
-
 final class SwiftModel {
     let identifier: String
+    // TODO: For the sake of consistency conformances should be a typealias for string.
+    //       This property contains the raw conformance statement as represented in the AST and is split by the property conformances
+    //       That should be done beforehand
     private let conformance: String
-    private let properties: [Property]
+    private let properties: Properties
 
     var configProperties: ConfigOptions? {
         didSet {
-            // TODO: Add to Tokens enum
             if !conformances.contains(Tokens.Protocols.codable) {
                 switch (hasExplicitEncoder, hasExplicitDecoder) {
                 case (true, true): conformances.insert(Tokens.Protocols.codable)
@@ -60,6 +59,8 @@ final class SwiftModel {
         var parts: [[String]] = []
 
         // imports
+        // TODO: The imports are currently represented as a String containing the full statement(e.g. import Foundation)
+        //       An import should be simply the module name that is imported and the import Token should be added in this step.
         imports.forEach { `import` in
             parts.append([`import`])
         }
@@ -153,14 +154,14 @@ final class SwiftModel {
         )
     }
 
-    init(identifier: String, conformance: String, properties: [Property], imports: Imports) {
+    init(identifier: String, conformance: String, properties: Properties, imports: Imports) {
         self.identifier = identifier
         self.conformance = conformance
         self.properties = properties
         self.imports = imports
     }
 
-    private func initializer(properties: [Property], parts: inout [[String]], isDefaulInit: Bool = false) {
+    private func initializer(properties: Properties, parts: inout [[String]], isDefaulInit: Bool = false) {
         // NewLine
         parts.append([])
 
@@ -208,7 +209,7 @@ final class SwiftModel {
         parts.append([Tokens.tab + Tokens.closedCurlyBracket])
     }
 
-    private func defaultInit(properties: [Property], parts: inout [[String]]) {
+    private func defaultInit(properties: Properties, parts: inout [[String]]) {
         // NewLine
         parts.append([])
 

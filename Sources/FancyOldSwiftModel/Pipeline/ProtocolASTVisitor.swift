@@ -24,7 +24,7 @@ final class ProtocolVisitor: ASTVisitor {
     func visit(_ protocolDeclaration: ProtocolDeclaration) throws -> Bool {
         // This method is called everytime a protocol declaration is found in the AST of the given file
         // In the following steps the protocol members are mapped to internal types
-        let properties: [Property] = protocolDeclaration.members.compactMap { member -> Property? in
+        let properties: Properties = protocolDeclaration.members.compactMap { member -> Property? in
             guard case let .property(propertyMember) = member else { return nil }
 
             return Property(

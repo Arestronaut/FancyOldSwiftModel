@@ -14,6 +14,11 @@ final class SourceFileWriter: ChainedAsyncResultOperation<SwiftModel, Void, Sour
         self.modelsURL = modelsURL
     }
 
+    init(modelsURL: URL, swiftModel: SwiftModel) {
+        self.modelsURL = modelsURL
+        super.init(input: swiftModel)
+    }
+
     override func main() {
         guard let input = input else { return finish(with: .failure(.missingInput)) }
 

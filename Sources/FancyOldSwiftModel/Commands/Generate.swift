@@ -9,9 +9,17 @@ struct Generate: ParsableCommand {
     )
 
     @Option(name: .shortAndLong)
+    private var identifier: String
+
+    @Option(name: .shortAndLong)
     private var model: String
 
+    @Option(name: .shortAndLong)
+    private var output: String?
+
     func run() throws {
-        GenerationPipelineManager.global.queue(generateModelArgument: .init(model: model))
+        GenerationPipelineManager.global.queue(
+            generateModelArgument: .init(identifier: identifier, model: model, output: output)
+        )
     }
 }
