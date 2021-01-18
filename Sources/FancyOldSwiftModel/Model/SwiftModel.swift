@@ -61,7 +61,7 @@ final class SwiftModel {
 
         // imports
         imports.forEach { `import` in
-            parts.append([Tokens.import, `import`])
+            parts.append([`import`])
         }
 
         parts.append([])

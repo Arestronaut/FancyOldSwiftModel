@@ -1,6 +1,7 @@
-import import Foundation
+import Foundation
+import Combine
 
-open class Account: Equatable, Codable {
+open class Account: Codable, Equatable {
 	public let id: UUID
 	open var name: String
 
