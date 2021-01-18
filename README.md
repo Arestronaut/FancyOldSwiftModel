@@ -1,6 +1,23 @@
 # FancyOldSwiftModel
 
+![Swift](https://github.com/Arestronaut/FancyOldSwiftModel/workflows/Swift/badge.svg)
+
 ... is a tool to generate swift models either by providing template files (which are written as a standalone swift protocol) or by using the inline sytnax
+
+## Installation
+For now building from source is the only available way to install the tool: 
+1. Build swift package
+```
+swift build --configuration release
+```
+
+2. Copy the executable to `usr/local/bin`
+```
+cp -f .build/release/FancyOldSwiftModel /usr/local/bin/FancyOldSwiftModel
+```
+
+### TODO
+- Add HomeBrew support
 
 ## Generate models from template files
 In order to generate model from template files you need to provide a path to the templates and an output path.

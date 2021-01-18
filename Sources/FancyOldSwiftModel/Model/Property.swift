@@ -16,3 +16,5 @@ struct Property {
         self.isSettable = isSettable
     }
 }
+
+typealias Properties = [Property]

@@ -19,6 +19,25 @@ final class GenerationPipelineManager {
     ///
     /// - Parameter generateModelArgument: The object containing the inline model template
     func queue(generateModelArgument: GenerateModelArgument) {
+        guard generateModelArgument.model.isValid else { return Console.print(.error, "The provided inline model is invalid") }
 
+        Console.print(.status, "Starting generation for: %@", generateModelArgument.identifier)
+
+        let swiftModel = SwiftModelFactory.map(from: generateModelArgument)
+
+        let sourceFileWriter = SourceFileWriter(modelsURL: generateModelArgument.outputURL, swiftModel: swiftModel)
+
+        sourceFileWriter.onResult = { result in
+            switch result {
+            case let .failure(error):
+                Console.print(.error, "Writing Source file: %@", error.localizedDescription)
+
+            case .success:
+                Console.print(.status, "Successfully generated model")
+            }
+        }
+
+        let queue = OperationQueue()
+        queue.addOperations([sourceFileWriter], waitUntilFinished: true)
     }
 }

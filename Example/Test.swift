@@ -1,4 +1,4 @@
-import import Foundation
+import Foundation
 
 struct Test {
 	var id: UUID
