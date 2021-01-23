@@ -1,7 +1,7 @@
 class FancyOldSwiftModel < Formula
   desc "A tool to easily generate swift models"
   homepage "https://github.com/Arestronaut/FancyOldSwiftModel"
-  url "https://github.com/Arestronaut/FancyOldSwiftModel.git", :tag => "1.0", :revision => "4447baf57c8aba26d9443f93d328fb872bdfe62b"
+  url "https://github.com/Arestronaut/FancyOldSwiftModel.git", :tag => "1.1", :revision => "e09eb15d39aba76877ead67e1ff925dc5613a2b2"
   head "https://github.com/Arestronaut/FancyOldSwiftModel.git"
 
   depends_on :xcode => ["12.0", :build]
